@@ -1,0 +1,42 @@
+7. Reverse Integer  : Leetcode 
+
+
+class Solution {
+public:
+    int reverse(int x) {
+        int rev  = 0;
+        while (x!=0){
+            int digit = x%10;
+            if((rev < INT_MIN/10)||(rev > INT_MAX/10)){
+            return 0;
+            }
+            rev = rev*10 + digit;
+            x = x/10;
+
+        }
+        return rev;
+        
+        
+    }
+};
+
+
+
+1281. Subtract the Product and Sum of Digits of an Integer
+
+class Solution {
+public:
+    int subtractProductAndSum(int n) {
+        int sum = 0;
+        int prod = 1;
+        
+        while(n!=0){
+            int digit = n%10;
+            sum= sum + digit;
+            prod = prod  *digit;
+            n = n/10;
+        }
+        int answer = prod - sum;
+        return answer;
+    }
+};
