@@ -19,8 +19,9 @@ int findUnique(int *arr, int size)
 Problem Statement : 2
 
 you have been given an array (Arr) of size N containing each number between 1 and N-1 at least once .
-there is a single integer value that is present in the array twice . yoour task is to find the duplicate
-integer value present in tha array .
+there is a single integer value that is present in the array twice . your task is to find the 
+duplicate integer value present in that array .
+
 
 SOLUTION : 
 
