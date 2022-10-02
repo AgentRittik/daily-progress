@@ -1,0 +1,41 @@
+
+
+PROBLEM      : YOU ARE GIVEN AN INTEGER ARRAY "ARR" OF SIZE "N" AND INTEGER "S" . YOUR TASK IS TO RETURN
+               THE LIST OF ALL PAIRS OF ELEMENTS SUCH THAT EACH SUM OF ELEMENTS OF EACH PAIR EQUAL "S".
+
+NOTE         :  Each pair should be sorted i.e the first value should be less than or equals to the second value 
+      
+                Return the list of pairs sorted in non -decreasing orderr of their first value . In case if 
+                two pairs have the same first value, the pair with a smaller second value should come first .
+        
+        
+PROBLEM FACED : In normal case (i am taking about when input is +ve integrer ) there is a no problem 
+                we are getting correct solution as per the constraints i.e output should be in non 
+                decreasing order . but in case of -ve numbers as input . i cant able to give the output 
+                in non-decreasing order . because increasing and decreasing is different in case of -ve 
+                numbers .
+                
+                SOLUTION : I use sort function to sort the output in non-decreasing order and then print them.
+                           
+                                          sort (ans.begin(), ans.end());
+                                          
+                                          
+CODE          :  #include <bits/stdc++.h> 
+                 #include <bits/stdc++.h> 
+                 vector<vector<int>> pairSum(vector<int> &arr, int s){
+                    // Write your code here.
+                     vector< vector<int> > ans;
+    
+                         for (int i = 0 ; i < arr.size() ;i++){
+                         for (int j =i+1 ;j < arr.size() ;j++){
+                             if ((arr[i]+arr[j]) == s){
+                                 vector <int > temp;
+                                 temp.push_back(min(arr[i], arr[j]));
+                                 temp.push_back(max(arr[i], arr[j]));
+                                 ans.push_back(temp);
+                             }
+                         }
+                     }
+                          sort (ans.begin(), ans.end());
+                          return ans  ; 
+                 }                                         
