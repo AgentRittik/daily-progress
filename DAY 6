@@ -1,0 +1,108 @@
+PROGRAM :1  CLASSES AND OBJECT 
+
+import java.util.*;
+
+class rect{
+    public double length;
+    public double breadth;
+
+    public boolean isRectangle(){
+        if (length == breadth )
+            return true;
+        else
+            return false ;
+
+    }
+    public double area (){
+        return length *breadth;
+    }
+    public double perimeter(){
+        return 2*(length+breadth);
+    }
+
+}
+
+
+public class Rectangle {
+    public static void main(String[] args) {
+
+        rect ob = new rect();
+        rect ob1 = new rect();
+
+        ob.length = 10;
+        ob.breadth = 10;
+
+        ob1.length = 15;
+        ob1.breadth = 15;
+
+        System.out.println("given is rectangle or not  = "+ ob.isRectangle());
+        System.out.println("area of rectangle = "+ ob.area());
+        System.out.println("perimeter of rectangle = "+ob.perimeter());
+
+        System.out.println(" ");
+
+        System.out.println("given is rectangle or not  = "+ ob1.isRectangle());
+        System.out.println("area of rectangle = "+ ob1.area());
+        System.out.println("perimeter of rectangle = "+ob1.perimeter());
+
+    }
+}
+
+
+
+PROGRAM 2 :   DATA HIDING IN JAVA 
+
+class react{
+    private double length;  //now they are private so we can't directly access these data members in other class
+    private  double breadth;
+
+    // we use property methods to read nd write write this data
+
+    double  getLenght(){
+        return  length;
+    }
+    double getBreadth(){
+       return breadth;
+    }
+     void setLenght(double l ){
+        if(l>0)         // helps in validating the input
+         length = l;
+        else
+            length = 0;
+    }
+    void setBreadth(double b ){
+        if(b>0)         // helps in validating the input
+            breadth = b;
+        else
+            breadth = 0;
+    }
+    public double area (){
+
+        return length *breadth;
+    }
+    public double perimeter(){
+        return 2*(length+breadth);
+    }
+
+}
+
+public class dataHiding {
+    public static void main(String[] args) {
+        react ob = new react();
+       // ob.lenght  = 10 ; //this will not execute because we cannot access private members here in thi class
+        //whats the method for acessing
+        // access by property methods
+        ob.setLenght(10);
+        ob.setBreadth(10);
+
+        System.out.println(ob.getLenght());
+        System.out.println(ob.getBreadth());
+
+        System.out.println("area  ="+ob.area());
+        System.out.println("perimeter "+ob.perimeter());
+
+
+
+
+    }
+}
