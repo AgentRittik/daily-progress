@@ -1,0 +1,79 @@
+PROBLEM  : we have given an array of lenght "N" and you have to swap the alternate element of an array .
+
+INPUT  : n=0
+OUTPUT : array is empty
+
+INPUT  : n=1
+OUTPUT : for swaping minimum length should be 2
+
+INPUT  : N = 5 array = 2 2 5 5 4
+
+OUTPUT : 2 2 5 5 4
+
+INPUT  : N = 5 array = 1 2 33 4 5
+
+OUTPUT : 2 1 4 33 5
+
+INPUT STAR : N = 7 array = 1 1 1 1 1 1 1
+
+OUTPUT :  1 1 1 1 1 1 0
+
+PROBLEM :  In the star input i am getting the last element as 0  but ideally it should be 1 . 
+i spend lot of time on it but can't fix it so i am open for suggestion you can help me.  
+
+CODE : 
+
+#include <iostream>
+using namespace std;
+
+   alternateArray(int a[],int n){
+	int i =0;
+	while (i+1<n){
+		if (a[i]==a[i+1]){
+			i+=2;
+		}
+		swap(a[i],a[i+1]);
+		i+=2;
+	}
+	cout<<"task done "<<endl;
+}
+ int printingArray (int a[] ,int n)
+ {
+	for (int i = 0;i<n;i++){
+		cout<<a[i]<<" ";
+    } 
+    cout<<endl;
+}
+
+int initilizingArray (int a[] ,int n)
+ {
+	for (int i = 0;i<n;i++){
+		cin>>a[i];
+    } 
+}
+
+
+int main(){
+	int n ; 
+	cout<<"enter the length of array = ";
+	cin>>n;
+	cout<<endl;
+	
+	if(n == 0 ){
+	cout<<"array is empty"<<endl;
+	return  0; 
+    }   
+    else if (n == 1){
+	cout<<"for swaping minimum length should be 2 "<<endl;
+	return 1;
+	}
+	int arr[n];
+	cout<<"enter the elements of array = ";
+	initilizingArray(arr , n);
+
+	
+	alternateArray(arr,n);
+	printingArray(arr,n);
+	
+	return 0;
+}
