@@ -1,0 +1,99 @@
+Problem 1 : Given a decimal no. you have to convert it to binary no. 
+
+INPUT  : enter the decimal number = 22.22
+
+OUTPUT : 10110      //
+
+INPUT  : enter the decimal number = 525
+OUTPUT : 1000001101
+
+INPUT  : enter the decimal number = -5
+OUTPUT : no output . 
+
+
+PROBLEM : IF YOU ENTER negative no.  then it will not work . 
+          
+
+
+CODE     : 
+
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int number ;
+	cout<<"enter the decimal number = ";
+	cin>>number;
+	int bit;
+	int ans = 0;
+	int revbit ;
+	int revans = 0; 
+	int i = 0;
+	while (number!=0)
+	{
+    	bit = number&1;
+		ans = bit* pow(10,i) + ans ;
+		number = number >>1;
+		i++;
+    }
+	    cout <<ans;
+
+}
+
+
+Problem 1 : Given a BINARY no. you have to convert it to DECIMAL no. 
+
+INPUT  :  101
+OUTPUT :  5
+
+INPUT  :  110010101
+OUTPUT :  405
+
+INPUT  :   0000000
+OUTPUT :   0
+
+
+
+CODE : 
+
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int number ;
+	cout<<"enter the BINARY number = ";
+	cin>>number;
+	int bit ;
+	int ans = 0 ;
+	int i = 0;
+	while(number!=0)
+	{
+		bit = number%10;
+		number/=10;
+		if (bit==1)
+		{
+			ans = ans + pow(2,i);
+	
+		}
+		i++;
+	}
+	cout<<"number in decimal representation = "<<ans ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
