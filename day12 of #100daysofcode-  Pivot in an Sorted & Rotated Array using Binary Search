@@ -1,0 +1,53 @@
+PROBLEM : Find Pivot in an Sorted & Rotated Array using Binary Search. 
+
+INPUT CONSTRAINTS : The array must be rotated sorted array because an pivot element can only exist in rotated sorted array . 
+
+PIVOT ELEMENT : Pivot element is the only element in input array which is smaller than it's previous element. A pivot element
+divided a sorted rotated array into two monotonically increasing array.
+
+EXPLANATION : In this code we have created a function pivotElement and passong it a array ARR and n = length of array . we take 2 variables s = 0(representing the starting index)
+              and e = n-1 (representing the last index). 
+               int mid = s +(e-s)/2; -> is used to find the the mid index . 
+               then we using while loop with terminating condition (s<e)
+               (arr[mid] >= arr[0]) -> this condition represents that the mid is present on the left side of pivot element so we move start to mid +1; 
+               ELSE BLOCK: if it is not in the left side then it is on the right side of pivot element . so we move our last index to mid -1 
+               
+               in every iteration we are reducing the array according to the conditions and at the end we are left with pivot element . 
+              
+                
+
+
+CODE : 
+
+#include<iostream>
+using namespace std;
+
+int pivotElement(int arr[], int n ){
+    int s= 0;
+    int e = n-1;
+    int mid = s +(e-s)/2;
+
+    while (s<e){
+        
+        if (arr[mid] >= arr[0]){
+            s = mid+1;
+        }
+        else {
+            e =mid;
+        }
+        mid = s +(e-s)/2;
+    }
+    
+    return s;
+}
+
+int main(){
+    int arr[]= {7,9,1,2,3};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    cout<<"length of array = "<< n <<endl;
+   int x = pivotElement(arr,5); 
+   cout <<"pivot element = "<<arr[x] <<endl;
+
+   return 0 ; 
+
+}
