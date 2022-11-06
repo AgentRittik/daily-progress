@@ -10,7 +10,29 @@ PROBLEM : Given an array 'arr' of integrer numbers . Where 'arr[i]' represents t
           is minimum . 
           
           
+EXPLANATION : I solve this question by using binary search .  First of all I find the search space of the 
+             question and the then in each iteration I narrow down the search space by applying some conditions 
           
+          bookAllocation -> int this method we have taken a two variable (s, e) s-> represents the 1st 1 element of possible search space .
+                            and e-> represents the last element . in this method we internally called isPrime function 
+          if(isPossible(n,m,arr,mid) -> 
+                                        true then we store the value of mid in ans (because after storing the and we know that if the allocation is possible 
+             for mid the it also be possible for the values greater than mid . so we perform e =mid -1.  but after doing this if we didn,t find the ans in the left
+            side search space than that means the mid that we store is the ans . in case if we didn,t store that mid then we don,t be able to find the answer)
+            
+            else -> 
+                    we move our start to s= mid +1 (because if we not able to allocate n books to m student at current mid then taht means we also not able top allocate 
+                    books to values smaller than mid )
+                    
+            isPossible ->
+                          this  function has 2 variables count =1 and pageSum = 0 . in this we are using a for loop to traverse the array . inside loo we put the conditions
+                         if(pageSum + arr[i] <= mid) -> if this condition get true then we chage pageSum to pageSum + arr [i] . 
+                         
+                         else -> we increase the count (because we allocated the book to 1st student and now we have to allocate books to 2nd student )
+                         
+        
+                    
+       
           
           
 CODE : 
