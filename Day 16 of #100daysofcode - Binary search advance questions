@@ -1,0 +1,89 @@
+PROBLEM : Given an array 'arr' of integrer numbers . Where 'arr[i]' represents the number of pages in the 'i-th book.
+          There are 'm' numbers of students and the task is to allocate all the books to their students . Allocate 
+          books in such a way that : 
+          
+          1. Each student gets atleast one book .
+          2. Each book should be allocated to student .
+          3.Book allocation should be in contiguous manner.
+          
+          you have to allocate the book to 'm' students such that the maximum numbers of pages assigned to a student
+          is minimum . 
+          
+          
+          
+          
+          
+CODE : 
+
+#include <bits/stdc++.h> 
+using namespace std;
+
+bool isPossible(int n, int m, int arr[], int mid){  
+    int count = 1;
+    int pageSum = 0;
+    for(int i = 0 ; i<n;i++){
+        if(pageSum + arr[i] <= mid){      // did the mistake here it will always be pageSum + arr[i] but i was only taking pageSum -> due to this the loop will run for 
+                                          // 1 extra time and this will leads to pagesum greater than the actual result 
+            pageSum+= arr[i];
+        }
+        else{
+            count++;
+            if(count> m || arr[i]>mid){
+                return false;
+            }
+            else{
+                pageSum = arr[i];
+            }
+        }
+    }
+    return true;
+}
+
+
+long long bookAllocation(int n, int m, int arr[]) 
+{	
+
+    int ans= -1;
+    int s= 0;
+    int sum =0;
+    for(int i = 0 ; i<n; i++){
+        sum+=arr[i];
+    }
+    int e = sum;
+    int mid  = s+ (e-s)/2;
+    while(s<=e){
+        if(isPossible(n,m,arr,mid)){
+           ans = mid; 
+            e = mid-1;
+        }
+        else {
+            s = mid+1;
+        }
+        mid = s + (e-s)/2;
+    }
+    return ans;
+}
+
+int main(){
+
+    int n , m ;
+    cout<<"enter the no. of students  = "<<endl;
+    cin>>m;
+    cout<<"enter the no.  of books  = "<<endl;
+    cin>>n;
+    int arr[n];
+    for(int i = 0; i<n;i++){
+        int y = i;
+        cout<<"enter the no. pages of the "<<++y<<" book = "<<endl;
+        cin>>arr[i];
+    }
+
+    cout<<"answer = "<<bookAllocation(n,m,arr)<<endl;
+
+    return 0;
+
+
+
+}
+          
+          
