@@ -1,0 +1,57 @@
+PROBLEM : Bubble Sort one of the sorting algorithms that works by repeatedly swapping the adjacent element of the  
+          arry if they are not in sorted order.
+          you are given an unsorted array consisting of N non-negative integers. you task is to sort the array in non-
+          decreasing order using the bubblle sort algorithm.
+          
+
+OPTIMIZATION : If no swap happen  happens in any iteration that means the remaining elements are are already sorted . 
+               so now we didn't go for further iterationns .  
+               To implement this i have taken a boolean variable count and firstly assigned it to false . and if we entered 
+               the arr[j]>arr[j+1] condition is true -> that means we are going to swap . so inside this block we change the 
+               count to true . after each iteration we check that if (count == 0 ) then we get out of the loop by using break
+               keyword.
+               
+               
+               
+INPUT : 1
+        5
+        6 2 8 4 10              
+        
+OUTPUT : 2 4 6 8 10
+
+INPUT : 2
+        2
+        1 2
+        4
+        4 3 2 1
+        
+OUTPUT : 1 2
+         1 2 3 4        
+
+               
+               
+               
+CODE      :
+
+
+#include <bits/stdc++.h> 
+void bubbleSort(vector<int>& arr, int n)
+{   
+    // Write your code here.
+    
+    for(int i =1;i<n ;i++) {
+         bool count = 0; 
+         for(int j =0 ; j<n-i ; j++){
+           if (arr[j]>arr[j+1]){
+            swap(arr[j+1],arr[j]);
+            count = 1;
+          } 
+       }    
+        if (count == 0 )
+            break;
+    }
+    
+}
+
+          
+          
