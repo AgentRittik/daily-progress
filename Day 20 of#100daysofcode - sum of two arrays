@@ -1,0 +1,165 @@
+PROBLEM: You are given two numbers 'A' and 'B' in the form of two arrays (A[] and B[]) of lenghts 'N' and 'M' respectively,
+         where each array elemewnt represents a digit. you need to find the sum of these two numbers andd return this sum in
+         the form of an array.
+         
+INPUT : n =3, m =3
+        A = 451, B =345
+
+OUTPUT : 796
+
+INPUT : n =4, m =1
+        A = 1234, B =6
+
+OUTPUT : 1240
+
+INPUT : n =3, m =2
+        A = 123, B = 99
+
+OUTPUT : 222
+
+CODE (CODE STUDIO):
+#include <bits/stdc++.h> 
+
+vector<int> reverse(vector<int>&temp){
+    int s =0;
+    int e = temp.size()-1;
+    while(s<e){
+        swap(temp[s++], temp[e--]);
+    }
+       return temp;
+}
+
+vector<int> findArraySum(vector<int>&a, int n, vector<int>&b, int m) {
+	// Write your code here.
+    vector<int>temp;
+    int count = 0;
+    int i = n-1;
+    int j = m-1;
+    int value;
+    int sum ; 
+    int carry= 0;
+    while(i>=0 && j>=0 ){
+        sum = a[i--]+b[j--]+carry;
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    while(i>=0){
+        sum = a[i--]+carry;
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    while(j>=0){
+        sum = b[j--]+carry; 
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    while(carry!=0){
+        sum = carry;
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    return reverse(temp);
+}
+
+
+
+
+CODE(VS CODE): 
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<int> reverse(vector<int>&temp){
+    int s =0;
+    int e = temp.size()-1;
+    while(s<e){
+        swap(temp[s++], temp[e--]);
+    }
+       return temp;
+}
+
+vector<int> findArraySum(vector<int>&a, int n, vector<int>&b, int m) {
+	// Write your code here.
+    vector<int>temp;
+    int count = 0;
+    int i = n-1;
+    int j = m-1;
+    int value;
+    int sum ; 
+    int carry= 0;
+    while(i>=0 && j>=0 ){
+        sum = a[i--]+b[j--]+carry;
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    while(i>=0){
+        sum = a[i--]+carry;
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    while(j>=0){
+        sum = b[j--]+carry; 
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    while(carry!=0){
+        sum = carry;
+        value = sum%10;
+        carry = sum/10;
+        temp.push_back(value);
+    }
+    return reverse(temp);
+}
+
+int main(){
+     int n ;
+        cout<<"enter the how many elements you wants to enter = ";
+        cin>>n;
+        cout<<endl;
+        vector<int>a ;
+
+        //taking the elements from user 
+        for(int i =0; i<n;i++){
+            int x;
+            int y = i+1;
+            cout<<"enter "<< y<<" element = "<<endl;
+            cin>>x;
+            a.push_back(x);
+        }
+         int m ;
+        cout<<"enter the how many elements you wants to enter = ";
+        cin>>m;
+        cout<<endl;
+        vector<int>b ;
+
+        //taking the elements from user 
+        for(int i =0; i<m;i++){
+            int z;
+            int y = i+1;
+            cout<<"enter "<< y<<" element = "<<endl;
+            cin>>z;
+            b.push_back(z);
+        }
+        vector<int>ans;
+
+         ans = findArraySum(a,n,b,m);
+
+       // pritning the sum
+
+        for(int i =0;i<=ans.size(); i++){
+            cout<<ans[i]<<" ";
+        }
+
+        return 0;
+}
+
+        
+        
+         
