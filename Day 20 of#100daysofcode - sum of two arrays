@@ -1,6 +1,8 @@
-PROBLEM: You are given two numbers 'A' and 'B' in the form of two arrays (A[] and B[]) of lenghts 'N' and 'M' respectively,
-         where each array elemewnt represents a digit. you need to find the sum of these two numbers andd return this sum in
+PROBLEM: You are given two numbers 'A' and 'B' in the form of two arrays (A[] and B[]) of length 'N' and 'M' respectively,
+         where each array element represents a digit. you need to find the sum of these two numbers and return this sum in 
          the form of an array.
+
+
          
 INPUT : n =3, m =3
         A = 451, B =345
