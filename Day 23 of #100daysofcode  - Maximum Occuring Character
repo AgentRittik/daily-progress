@@ -1,0 +1,77 @@
+PROBLEM :  Given a string str. The task is to find the maximum occurring character in the string str. If more than one character occurs the maximum number of time 
+           then print the lexicographically smaller character.
+
+EXPLANATION : 1. char maxOcc(string str) -->>  in this function firstly we create a Array of length 26 of which the index represents alphabets 
+                 (a--> 0index ,b -> 2 index and so on upto z->25 index) and the elements at the index represents the no. of occurance of that particular alphabet .
+                 we take a for loop and then traverse all the element of the string passed as a parameter .
+              2. then we store the value of each character at particular index in ch variavle and then if character is :
+                 Lowercase --> then we use  formula (index = ch - 'a') --> this we give us a value .
+                 Uppercase --> then we use  formula (index = ch - 'A') --> this we give us a value .
+              3. we can use the  value  calculated by above formulas . the value we use as index for arr and then go there and increase the element value by one .
+              4. After the completion then we find the max element of the array arr and store it index in ans variable.
+              5. at the end we return ('a'+index) --> as we assume above that index of arr represent some alphabetic character .so we use this formula to convert that 
+                 index into character. 
+                 
+
+Example 1:.
+
+Input: 
+ S = "abcdrtbwerrcokokokd" 
+ W = "bcd" 
+Output: 
+ 2
+Explanation: 
+The two subsequences of string W are
+{ S1 , S2 , S3 } and { S6 , S11 , S18 }
+(Assuming 0- based indexing).
+ 
+
+Example 2:
+
+Input: 
+S = "ascfret" 
+W = "qwer" 
+Output: 
+0
+Explanation:
+No valid subsequences are possible.      
+
+
+CODE:
+
+
+#include<iostream>
+using namespace std;
+char maxOcc(string str){
+    int arr[26] = {0};
+    for(int i = 0 ; i<str.length();i++){
+        int ch = str[i];
+        int index;
+        if(ch>='a' && ch<='z'){
+            index = ch - 'a';
+        }
+         if(ch>='A' && ch<='Z'){
+            index = ch - 'A';
+        }
+        arr[index]++;
+    }
+    int max = -1;
+    int ans =0 ;
+    for(int i =0 ; i<26;i++){
+        if(max < arr[i]){
+            ans  = i;       // -->> if we didn't find any no greater than the current max element then we should have access to current max element 
+            max = arr[i]; 
+        }                 
+    }
+
+    return 'a'+ ans;
+}
+int main(){
+    string str; 
+    cout<<"enter the string = ";
+    cin>>str;
+    cout<<endl;
+
+    cout<<"max element in entered string is : "<<maxOcc(str)<<endl;
+
+}
