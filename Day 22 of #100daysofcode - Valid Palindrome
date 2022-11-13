@@ -1,11 +1,11 @@
 PROBLEM :      A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
                Given a string s, return true if it is a palindrome, or false otherwise.
           
-EXPLANATION :  bool isValid(char ch)      -->>  function for cheecking that element is Alphanumeric characters or not : if true -> return 1    else -> return 0
+EXPLANATION :  bool isValid(char ch)      -->>  function for checking that element is Alphanumeric characters or not : if true -> return 1    else -> return 0
                char toLowerCase(char ch)  -->>  function to convert the elements into lowercase ->> if already in lower case or a number -> return same value 
                                                  //else ->> convert into lowercase and then return.
                                                  
-               bool palindrome(string temp) -->> function to check palindrome -> use 2 pointer approach here and comparere the elements . the first pointer is 
+               bool palindrome(string temp) -->> function to check palindrome -> use 2 pointer approach here and compare the elements . the first pointer is 
                                                 at the 1st index and the second pointer is at last index .  then compare the elements until (1st pointer greater 
                                                 than last pointer ). if anywhere we found that elements are not equal then return 0 from there                                
           
