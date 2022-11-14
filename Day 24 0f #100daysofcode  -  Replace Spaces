@@ -1,4 +1,4 @@
-PROBLEM     :  You have given a string 'STR' of woerds .  you need to replace all the spaces between words eith "@40".
+PROBLEM     :  You have given a string 'STR' of words .  you need to replace all the spaces between words with "@40".
 
 EXPLANATION :  1. we created a empty string temp.
                2. we are using a for loop to traverse all the elements in a string str. then we use the if condition.
