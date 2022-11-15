@@ -1,0 +1,50 @@
+PROBLEM :    Given two strings s and part, perform the following operation on s until all occurrences of the substring part are removed:
+             Find the leftmost occurrence of the substring part and remove it from s.
+             Return s after removing all occurrences of part.
+
+EXPLANATION: I solve this question with the help of string.find() function and string. erase function.
+             while(s.length() !=0 && s.find(part)<s.length()) -- >> starting  loop and check 2 conditions to enter :--
+              1. length of string s is not equal to zero because if we enterd the loop then we perform erase operatrion on string s and if after erasing there is no
+                 character remaining in the string then we have to stop comparision .
+              2. string.find() --> this function return the starting index of substring in s . so if the index return by this function is greater than the string length
+                 that means that found substring is not inside s string . thats whu we use condition s.find(part)<s.length().
+              3. inside the loop we are erasing the substring found in string s . to erase() function we pass 2 parameters 
+                       I.  starting index of substring -->> s.find(part) -> find() fns return the starting index of substring in s  
+                       II. ending index of substring   -->> part.length()
+            
+                 
+               
+           
+
+Example 1:
+
+Input: s = "daabcbaabcbc", part = "abc"
+Output: "dab"
+Explanation: The following operations are done:
+- s = "daabcbaabcbc", remove "abc" starting at index 2, so s = "dabaabcbc".
+- s = "dabaabcbc", remove "abc" starting at index 4, so s = "dababc".
+- s = "dababc", remove "abc" starting at index 3, so s = "dab".
+Now s has no occurrences of "abc".
+Example 2:
+
+Input: s = "axxxxyyyyb", part = "xy"
+Output: "ab"
+Explanation: The following operations are done:
+- s = "axxxxyyyyb", remove "xy" starting at index 4 so s = "axxxyyyb".
+- s = "axxxyyyb", remove "xy" starting at index 3 so s = "axxyyb".
+- s = "axxyyb", remove "xy" starting at index 2 so s = "axyb".
+- s = "axyb", remove "xy" starting at index 1 so s = "ab".
+Now s has no occurrences of "xy".
+ 
+ 
+ CODE : 
+ 
+ class Solution {
+public:
+    string removeOccurrences(string s, string part) {
+        while(s.length() !=0 && s.find(part)<s.length()){
+            s.erase(s.find(part),part.length());
+        }
+        return s; 
+    }
+};
