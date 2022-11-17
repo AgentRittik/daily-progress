@@ -1,0 +1,77 @@
+VECTORS : Vectors in C++ are sequence containers representing arrays that can change their size during runtime. They use contiguous storage locations for their elements just 
+          as efficiently as in arrays, which means that their elements can also be accessed using offsets on regular pointers to its elements.
+
+
+
+CODE : #include<iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+
+    vector<int >a (5,1); // -> this means that a vector is created of size 5 and having all thee elements as 1 
+
+    for (int i : a)
+    cout<< i <<" ";
+
+    cout<<endl;
+    vector<int>last(a);
+    cout<<"printing last"<<endl;
+    for (int i :last)
+    cout<< i <<" ";
+
+    cout<<endl;
+
+
+    vector <int>v;
+    
+    cout<<"capacity -> "<<v.capacity()<<endl;
+
+    v.push_back(1);
+    cout<<"capacity -> "<<v.capacity()<<endl;
+
+     v.push_back(2);
+    cout<<"capacity -> "<<v.capacity()<<endl;
+
+     v.push_back(3);
+    cout<<"capacity -> "<<v.capacity()<<endl;
+
+    // capacity -> represents the memory allocated to array
+    // size -> represents how many elements are there in vector
+    cout << "size "<< v.size()<<endl;
+
+    cout <<"element at 2nd index "<< v.at(2)<<endl;
+
+    cout << "1st element "<<v.front()<<endl;
+    cout << "last element "<<v.back()<<endl;
+
+    cout<<"before pop"<<endl;
+
+    for(int i :v)
+    cout<<i<<" ";
+
+    v.pop_back();
+
+    cout<<"after pop"<<endl;
+    for(int i :v)
+    cout<<i<<" ";
+
+    //clear ................. it only delete all the elements and make the array empyt but it will not delete the array
+
+    cout<< "before clear size "<<v.size()<<endl;
+    v.clear();
+    cout<<"after clear size -> "<<v.size()<<endl;
+    cout<<"capacity -> "<<v.capacity()<<endl;
+
+
+
+
+
+
+
+
+
+return 0;
+
+}
+
