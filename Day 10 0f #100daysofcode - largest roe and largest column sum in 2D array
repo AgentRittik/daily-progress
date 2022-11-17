@@ -1,0 +1,97 @@
+PROBLEM : YOU have given a 2D array 'Arr'. you have to find the largest row and largest column sum of that array . 
+
+EXPLANATION : 1. largestRowSum --> In this function we have taken a  variable max = -1 , so that after finding the sum of each row we can compare the sum with max and update 
+                                   max accordingly. 
+                              -->> after that i have used 2 for loops to iterate throught 2D array . 1st loop for rows and 2nd loop for columns . inside the scope of 1 loop we 
+                                   declare a variable sum and initilize it to zero , so for each row the sum become 0 and in further steps it only store the sum of that particular row. 
+                              -->> inside the 2nd loop we are finding the sum of that particular row and when 2nd loop terminated then inside the scope of 1st loop we are checking the 
+                                   condition   if(max < sum) --> true (we update the value of max as sum) else (we do nothing ).
+                                   
+              2. largestColSum -->> same steps are there that we followed in largestRowSum but here the 1st loop runs for column and 2nd loop runs for row .                    
+
+                                   
+INPUT : 
+3 4 5 
+6 7 8 
+9 1 2 
+
+OUTPUT : 
+largest row sum  = 21
+largest column sum  = 18
+
+INPUT : 
+11 33 44
+56 78 94
+22 45 88
+
+OUTPUT : 
+largest row sum  = 228
+largest column sum  = 226
+
+CODE : 
+#include<iostream>
+using namespace std;
+
+int largestRowSum(int arr[][3],int row ,int col){
+     int max =-1;
+    for(int i =0 ;i<row;i++){
+        int sum = 0;
+        for(int j =0 ; j< col ;j++){
+            sum+=arr[i][j];
+           
+        }
+         cout<<"sum of row "<<i<<" is "<<sum<<endl;
+        if(max<sum){
+            max = sum;
+        }
+
+
+    }
+    return max;
+}
+
+int largestColSum(int arr[][3],int row ,int col){
+     int max =-1;
+    for(int j =0 ;j<col;j++){
+        int sum = 0;
+        for(int i =0 ; i< col ;i++){
+            sum+=arr[i][j];
+           
+        }
+         cout<<"sum of colum "<<j<<" is "<<sum<<endl;
+        if(max < sum){
+            max = sum;
+        }
+
+
+    }
+    return max;
+}
+
+
+int main(){
+
+    int arr[3][3];
+    cout<<"enter the elements of array"<<endl;
+    //taking input row wise 
+    for(int row = 0 ; row<3;row++){
+        for(int col =0;col<3;col++){
+            cin>>arr[row][col];
+        }
+    }
+
+    cout<<"printing the array"<<endl;
+
+    for(int row = 0 ; row<3;row++){
+        for(int col =0;col<3;col++){
+            cout<<arr[row][col]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    int ans1 = largestRowSum(arr,3,3);
+    cout<<"largest row sum  = "<<ans1<<endl;
+    int ans2 =largestColSum(arr,3,3);
+    cout<<"largest column sum  = "<<ans2<<endl;
+    
+}
