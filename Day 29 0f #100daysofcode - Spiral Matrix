@@ -1,0 +1,81 @@
+PROBLEM: Given an m x n matrix, return all elements of the matrix in spiral order.
+
+EXPLANATION : In this questiion i am i have taken a while loop and it terminates when (count > total) count -> is initially 0 and  total - > is no. of rows x no. of columns
+              the count got incremented everytime we push_back a element in ans vector. 
+              : for printing in spiral pattern i am using 4 for loops . 
+              1. for(int index = startingCol; count <total && index <= endingCol; index++) ->> this loop print the 1st complete row , and each iteration it increment count and 
+                                                                                               then in every iteration check the condition count <total. at the end of the loop 
+                                                                                               now we will increment the startingRow . because we have printed it .
+                                                                                               
+               2. for(int index = startingRow ; count <total && index <= endingRow; index++ ->> this loop print the last  complete column , and each iteration it increment count and 
+                                                                                               then in every iteration check the condition (count <total) . at the end of the loop 
+                                                                                               now we will decrement the endingCol . because we have printed it .
+               3. for(int index = endingCol ; count <total && index >= startingCol ; index--)->> this loop print the last complete row in reverse and after each iteration it increment count and 
+                                                                                               then in every iteration check the condition (count <total). at the end of the loop 
+                                                                                               now we will decrement the endingRow . because we have printed it .
+               4. for(int index = endingRow ; count <total && index >= startingRow ; index--) ->> this loop print the last complete column in reverse, and each iteration it increment count and 
+                                                                                               then in every iteration check the condition (count <total). at the end of the loop 
+                                                                                               now we will increment the startingCol . because we have printed it .
+                                                                                                                                                                                                                                                                                                                                            
+Example 1:
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+
+Example 2:
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+CODE : 
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int row = matrix.size();
+        int col = matrix[0].size();
+        int total = row*col;
+        int count =0 ;
+
+        int startingRow = 0;
+        int startingCol = 0;
+        int endingRow = row-1;
+        int endingCol = col-1;
+        vector<int>ans;
+
+
+        while(count<total){
+            //printing the 1st row 
+            for(int index = startingCol; count <total && index <= endingCol; index++){
+                ans.push_back(matrix[startingRow][index]);
+                count++;
+            }
+            startingRow++;
+            //printing the last column
+            for(int index = startingRow ; count <total && index <= endingRow; index++){
+                ans.push_back(matrix[index][endingCol]);
+                count++;
+            }
+            endingCol--;
+            //printing last row reverse 
+             for(int index = endingCol ; count <total && index >= startingCol ; index--){
+                ans.push_back(matrix[endingRow][index]);
+                count++;
+            }
+            endingRow--;
+            //printing 1st col reverse
+            for(int index = endingRow ; count <total && index >= startingRow ; index--){
+                ans.push_back(matrix[index][startingCol]);
+                count++;
+            }
+            startingCol++;
+        }
+
+        return ans;
+    }
+};
