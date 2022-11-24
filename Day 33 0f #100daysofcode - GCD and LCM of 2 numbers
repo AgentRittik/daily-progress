@@ -1,0 +1,59 @@
+PROBLEM : You have been given 2 numbers . you have to find the GCD (greatest common divisor ) and LCM (least common multiple) of that numbers .
+
+EXPLANATION : To solve this question i use  "Euclidean algorithm"
+
+If we subtract a smaller number from a larger one (we reduce a larger number), GCD doesn’t change. So if we keep subtracting repeatedly the larger of two, we end up with GCD.
+Now instead of subtraction, if we divide the smaller number, the algorithm stops when we find the remainder 0.
+
+-->> for lcm i use this formula [ lcm(a,b) X gcd(a,b) ] = a*b
+
+
+Input: a = 30, b = 20
+Output: gcd = 10, lcm= 60
+
+nput: a = 35, b = 15
+Output: gcd = 5 , lcm = 105
+
+
+
+
+code: 
+
+#include<iostream>
+using namespace std;
+
+int gcd(int a ,int b){
+    if(a==0){
+        return b;
+    }
+    if(b==0){
+        return a ;
+    }
+    while(a!= b){
+        if(a>b){
+         a =a-b;
+        }
+        if(b>a){
+         b = b-a;
+        }
+    }
+
+    return a;
+}
+
+int main(){
+    int a,b;
+    cout<<"enter 2 numbers  = ";
+    cin>>a>>b;
+    cout<<endl;
+     int x = gcd(a,b);
+
+     cout<<"gcd of 2 numbers "<<a<<" and "<<b << " is "<<x<<endl;
+     
+     int lcm = (a*b)/x;
+
+     cout<<"lcm of 2 numbers "<<a<<" and "<<b << " is "<<lcm;
+
+     return 0;
+
+}
