@@ -1,0 +1,50 @@
+POINTERS IN C++ 
+
+
+CODE :
+
+#include<iostream>
+using namespace std;
+
+
+int main(){
+
+    int arr[10] ={2,5,6 ,10};
+
+    cout<<"address of first memeoory block is "<<arr<<endl;
+    cout<<arr[0]<<endl;
+    cout<<"adress of forst memory block is "<<&arr[0]<<endl;
+
+
+    cout<<"anything 1 -> "<<*arr<<endl;
+
+    cout<<"anything 2 -> "<<*arr+1<<endl;
+
+    cout<<"anything 3 -> "<<*(arr+2)<<endl;
+
+    cout<<"anything 4 -> "<<*(arr)+1<<endl; // same as anything 1 
+
+    cout<<"special case 5 -> " << arr[2]<<endl;
+
+                                             // special note -> arr[2] = *(arr + 2) this is evul;ated memory like this 
+    cout<<"special case 6 -> " << *(arr+2) <<endl; 
+
+    int i = 3;
+
+    cout<<"most special case-> "<< i[arr]<<endl; //  i[arr] -> *(i + arr)
+
+
+    int temp[10] ={1,2};
+    cout<<sizeof(temp)<<endl;
+    cout<<sizeof(*temp)<<endl; // size of value at address that is stored in temp
+    cout<<sizeof(&temp)<<endl; // -> size of address of temp
+
+
+    int *ptr ;
+    ptr = &temp[0];
+    cout<<sizeof(ptr); //ptr -> address
+    cout<<sizeof(*ptr); 
+    cout<<sizeof(&ptr);
+
+return 0;
+}
