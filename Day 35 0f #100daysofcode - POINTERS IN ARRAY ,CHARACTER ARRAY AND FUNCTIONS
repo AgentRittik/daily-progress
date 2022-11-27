@@ -1,0 +1,110 @@
+  POINTER IN ARRAY AND CHARACTER ARRRAY 
+  
+  
+  CODE : 
+     
+     #include<iostream>
+using namespace std;
+
+int main(){
+
+    int arr[5] ={1,2,3,4,5};
+    char ch[6] = "abcde";
+
+    cout<< arr<<endl;  //   -> this will print the address of arr
+    cout<< ch<<endl;   //   -> this will print the complete character array .
+     
+    char *c = &ch[0];
+    cout<< c <<endl;   // according to the previous cases it should print the address that is stored in pointer c
+                       // but it will print the complete string 
+
+    // agar end me null character nahi milegaa  
+
+    char temp  = 'z'; // special case 
+    char *p = &temp;
+    cout<<"special case -> " << p <<endl ;    
+
+    //output of above -->> zabcde --> because we are only passing the 1st address in the pointer but it print until it find \0 null character 
+    // bad practice 
+
+    // similar type of case 
+
+     char ch1 = "abcdef";
+     char *ptr = "abcdef";  // very bad practice never use it 
+
+    return 0;
+}
+
+
+
+
+
+POINTER IN FUNCTIONS :
+
+ #include<iostream>
+using namespace std;
+
+int test(int *p){
+   cout<<*p<<endl;
+   cout<<*p<<endl;
+
+}
+
+void update (int *p){
+    p = p+1;
+    cout<<"inside update " <<p<<endl;
+} 
+
+void update2(int *p){
+    *p = *p+1;
+   
+}
+
+int getsum(int *arr ,int n ){  // (int arr[] ,int n){   //here arr is just a pointer 
+
+    cout<<sizeof(arr)<<endl;  //--> this will give the size as a pointer 
+
+    int sum =0;
+
+    for(int i =0 ; i<n ; i++){
+        sum+=arr[i];
+    }
+    return sum;
+}
+
+int main(){
+
+    int value = 5;
+     int *p = &value;
+
+     test(p);
+
+     cout<<"before calling "<<endl;
+     cout<<p<<endl;
+                                            // same value is printed 
+    cout<<"after calling "<<endl;
+    update(p);
+    cout<<p<<endl;
+
+    cout<<"before calling "<<endl;
+     cout<<*p<<endl;
+                                            // same value is printed 
+    cout<<"after calling "<<endl;
+    update2(p);
+    cout<<*p<<endl;
+
+
+
+    // note --> 1 thing is clear that we can change the value that a pointer points to a function and it also 
+    // reflected int the main memory . 
+    // but in case of updating the address it didn't reflected outside the function 
+
+    // array passing
+
+    int arr[5] = {1,2,3,4,5};
+    cout<<endl;
+
+    cout<<"sum is " <<getsum(arr ,5 )<<endl;
+
+return 0;
+}
