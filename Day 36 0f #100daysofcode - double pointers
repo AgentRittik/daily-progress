@@ -1,0 +1,64 @@
+DOUBLE POINTERS IN C++
+
+
+CODE: 
+
+#include<iostream>
+using namespace std;
+
+void update (int **p2 ){
+
+   // p2 =p2+1 ;  only internally change inside function
+    
+    // *p2 =*p2+1; the address inside p will be incremented  
+
+    **p2 = **p2+1; // value will be change from 5 --> 6 
+}
+
+
+int main(){
+    int i =5;
+    int *p = &i;
+    int**p2 = &p;
+    cout<<endl<<"everything is right "<<endl;
+    
+    cout<<"printing i ->> "<<i<<endl;
+    cout<<"printing p ->> " << p <<endl;
+    cout<<"printing address of p ->> " << &p <<endl;
+
+    cout<< "printing p2 ->> " << p2<<endl;
+
+    cout<< "printing p2 ->> " << *p2<<endl;
+
+    //pritning i 
+
+    cout<< "printing i ->> " << i<<endl;
+    cout<< "printing *p ->> " <<*p<<endl;
+    cout<< "printing **p2 ->> " <<**p2<<endl;
+
+
+    // ways of pritning the address of i 
+
+    cout<< "printing address ->> " <<&i<<endl;
+    cout<< "printing address->> " << p<<endl;
+    cout<< "printing address->> " << *p2<<endl;
+
+    // prinnting the address of p 
+
+    cout<< "printing address ->> " << &p<<endl;
+    cout<< "printing address ->> " << p2<<endl;
+
+
+    cout<<endl<<endl<<endl<<endl;
+
+    cout<<"before "<< i<<endl;
+    cout<<"before "<< p<<endl;
+    cout<<"before "<< p2<<endl;
+
+     update(p2);
+
+    cout<<"after "<< i<<endl;
+    cout<<"after "<< p<<endl;
+    cout<<"after "<< p2<<endl;
+
+}
