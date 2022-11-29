@@ -1,0 +1,119 @@
+Problem : Write a function int max_of_four(int a, int b, int c, int d) which returns the maximum of the four arguments it receives.
+
+
+Input Format
+
+Input will contain four integers -  , one per line.
+
+Output Format
+
+Return the greatest of the four integers.
+PS: I/O will be automatically handled.
+
+Sample Input
+
+3
+4
+6
+5
+Sample Output
+
+6
+
+
+CODE : 
+
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+
+int max_of_four(int a, int b, int c, int d){
+    if(a>b && a>c && a>d){
+        return a;
+    }
+    else if(b>a && b>c && b>d){
+        return b;
+    }
+    else if(c>a && c>b && c>d){
+        return c;
+    }
+    else{
+        return d;
+    }
+}
+
+
+int main() {
+    int a, b, c, d;
+    scanf("%d %d %d %d", &a, &b, &c, &d);
+    int ans = max_of_four(a, b, c, d);
+    printf("%d", ans);
+    
+    return 0;
+}
+
+
+PROBLEM : Input Format
+
+You will be given two positive integers, a and b (a<=b), separated by a newline.
+
+Output Format
+
+For each integer  in the inclusive interval :
+
+If 1<= n < =9, then print the English representation of it in lowercase. That is "one" for 1, "two" for 2 , and so on.
+Else if n>9 and it is an even number, then print "even".
+Else if n>9  and it is an odd number, then print "odd".
+
+        
+         
+
+
+CODE: 
+
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main() {
+    // Complete the code.
+    int a ,b;
+    cin>>a;
+    cin>>b;
+    
+    for(int i =a ; a<=b ; a++){
+        if(a>=1 && a<=9){
+            switch(a){
+                case 1 : cout<<"one"<<endl;
+                         break;
+                case 2 : cout<<"two"<<endl;
+                         break;
+                case 3 : cout<<"three"<<endl;
+                         break;
+                case 4 : cout<<"four"<<endl;
+                         break;
+                case 5 : cout<<"five"<<endl;
+                         break;
+                case 6 : cout<<"six"<<endl;
+                         break;
+                case 7 : cout<<"seven"<<endl;
+                         break;
+                case 8 : cout<<"eight"<<endl;
+                         break;
+                case 9 : cout<<"nine"<<endl;
+                         break;
+                         
+            }
+        }
+        else if(a%2==0){
+            cout<<"even"<<endl;
+        }
+        else{
+            cout<<"odd"<<endl;
+        }
+    }
+    return 0;
+}
+
+
