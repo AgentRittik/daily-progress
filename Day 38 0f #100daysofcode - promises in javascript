@@ -1,0 +1,54 @@
+TOPIC : promises in javaScript 
+
+
+CODE: 
+console.log("starting of function");
+
+setTimeout(function timer1(){
+    console.log("timer1");
+}, 0);
+
+for(var i =0 ; i<10000000000; i++){
+     // something
+}
+
+var x = Promise.resolve("rittik's promise");        
+x.then(function processPromise(value){
+    console.log("who's promise ? "+value);
+})
+
+setTimeout(function(){
+    console.log("timer2");
+},0);
+
+console.log("end of function"); 
+
+
+/// note : the microtask queue function is first executed before the event queue function . 
+// 
+
+
+CODE :
+
+console.log("starting of function");
+
+setTimeout(function timer1(){
+    console.log("timer1");
+    let y =  Promise.resolve("immediately promise ");
+    y.then(function promise(value){
+        console.log("who's promise ?  "+value);
+    })
+}, 0);
+
+var x = Promise.resolve("rittik's promise");        
+x.then(function processPromise(value){
+    console.log("who's promise ? "+value);
+})
+
+setTimeout(function(){
+    console.log("timer2");
+},0);
+
+console.log("end of function"); 
+
+
