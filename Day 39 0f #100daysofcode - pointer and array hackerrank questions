@@ -1,0 +1,93 @@
+Problem 1 : Function Description
+
+Complete the update function in the editor below.
+
+update has the following parameters:
+
+int *a: an integer
+int *b: an integer
+Returns
+
+The function is declared with a void return type, so there is no value to return. Modify the values in memory so that a contains their sum and b 
+contains their absoluted difference.
+
+a' = a+b
+b' = |a-b|
+
+Sample Input
+
+4
+5
+Sample Output
+
+9
+1
+
+CODE  : 
+
+#include <stdio.h>
+
+void update(int *a,int *b) {
+    // Complete this function  
+    int ans;  
+    ans = *a + *b;
+    if(*a>*b)
+    *b = *a - *b;
+    else
+     *b = *b -*a;
+    *a = ans;
+}
+
+int main() {
+    int a, b;
+    int *pa = &a, *pb = &b;
+    
+    scanf("%d %d", &a, &b);
+    update(pa, pb);
+    printf("%d\n%d", a, b);
+
+    return 0;
+}
+
+
+PROBLEM 2 : You will be given an array of N integers and you have to print the integers in the reverse order.
+
+Sample Input
+
+4
+1 4 3 2
+Sample Output
+
+2 3 4 1
+
+CODE : 
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int N; 
+    cin>>N;
+    int arr[N];
+    for(int i= 0;i<N ;i++){
+        cin>>arr[i];
+    }
+    
+    int i=0;
+    int j = N-1;
+    while(i<=j){
+        swap(arr[i++],arr[j--]);
+        
+    }
+    for(int i =0 ;i<N ; i++){
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
+
