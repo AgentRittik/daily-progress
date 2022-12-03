@@ -1,0 +1,67 @@
+CODE : 
+
+import java.awt.*;
+
+
+public class thirdApp extends Frame{
+    Label l;
+    TextField tf;
+    Button b;
+
+    thirdApp(){
+        super("third app");
+        setLayout(new FlowLayout());
+        l = new Label("name");
+        tf = new TextField(20);
+        b = new Button("ok");
+        add(l);
+        add(tf);
+        add(b);
+    }
+
+    public static void main(String[] args) {
+        thirdApp f = new thirdApp();
+        f.setSize(400 ,400);
+        f.setVisible(true);
+
+    }
+}
+
+
+CODE : 
+import java.awt.*;
+import java.awt.event.*;
+
+class myFrame extends Frame implements ActionListener{
+
+    Label l;
+    Button b;
+    int count = 1;
+    myFrame(){
+        super("counter");
+        setLayout(new FlowLayout());
+        l = new Label("   "+count);  // here count is integer so we are doing coersion  (string + integer)  = string
+        b = new Button("click");
+        b.addActionListener(this); // this -->> because who is a listener of this button ? -> myFrame class only because it is implementing actionlistener
+
+        add(l);
+        add(b);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        count++;
+        l.setText("   " + count);
+    }
+}
+
+
+public class buttonDemoCounter {
+    public static void main(String[] args) {
+        myFrame f = new myFrame();
+        f.setSize(300,300);
+        f.setVisible(true);
+
+
+    }
+}
