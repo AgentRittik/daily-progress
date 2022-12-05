@@ -1,0 +1,66 @@
+Problem 1: Find the factorial of a number using recursion.
+
+
+code :
+
+#include<iostream>
+using namespace std;
+
+int fact(int n ){
+
+    //base case 
+    if(n==0){
+        return 1;
+    }
+
+    int smallerProb = fact(n-1);
+    int biggerProb = n*smallerProb;
+
+    return biggerProb;
+
+}
+
+int main(){
+
+int n;
+cout<<"enter a number = ";
+cin>>n;
+int ans = fact(n);
+cout<<"\n factorial of "<<n<<" is "<<ans<<endl;
+
+    return 0;
+}
+
+
+
+Problem 2: Find the power of 2 using recursion.
+
+code:
+
+#include<iostream>
+using namespace std;
+
+int power(int n){
+
+    //base case 
+    if(n==0){
+        return 1;
+    }
+
+    int smallProb = power(n-1);
+    int bigProb = 2*smallProb;
+
+    return bigProb;
+
+}
+
+int main(){
+int n;
+cout<<"enter the power = ";
+cin>>n;
+int ans = power(n);
+cout<<"\n 2 power "<<n<<" is "<<ans<<endl;
+
+
+
+}
