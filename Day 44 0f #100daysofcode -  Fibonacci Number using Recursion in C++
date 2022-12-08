@@ -1,1 +1,116 @@
-hello
+Problem : Given a Secquence of numbers 'ARR' . Your Task is to return a sorted secquence of 'ARR' in non- decending order with help of merge 
+          sort algorithm
+          
+Explanation : At first, check if the left index of array is less than the right index, if yes then calculate its mid point
+
+             Now, as we already know that merge sort first divides the whole array iteratively into equal halves, unless the atomic values are achieved. 
+             Here, we see that an array of 7 items is divided into two arrays of size 4 and 3 respectively.
+             
+             Now, again find that is left index is less than the right index for both arrays, if found yes, then again calculate mid points for both the arrays.
+             
+             Now, further divide these two arrays into further halves, until the atomic units of the array is reached and further division is not possible.
+             
+             After dividing the array into smallest units, start merging the elements again based on comparison of size of elements
+             Firstly, compare the element for each list and then combine them into another list in a sorted manner.   
+          
+          
+Sample Input 1 :
+2
+7
+3 4 1 6 2 5 7
+4
+4 3 1 2
+
+Sample Output 1 :
+1 2 3 4 5 6 7
+1 2 3 4          
+ 
+ 
+CODE :
+ 
+void merge(vector < int > & arr, int s, int e){
+
+    int mid = (s+e)/2;
+
+    int l1 = mid-s+1;
+    int l2 = e-mid;
+
+    int mainArrayIndex= s; // global variable 
+
+    int *First = new int[l1];
+    int *Second= new int[l2];
+
+// coping first array
+    
+    for(int i= 0; i<l1;i++){
+        First[i] = arr[mainArrayIndex++];
+    }
+// coping second array 
+    
+    mainArrayIndex = mid +1;
+     for(int i= 0; i<l2;i++){
+        Second[i] = arr[mainArrayIndex++];
+    }
+
+// merge array and then sort them 
+     
+     int Index1 = 0;
+     int Index2 = 0;
+     mainArrayIndex = s;
+     while(Index1 < l1 && Index2 < l2 ){
+        if(First[Index1] < Second[Index2]){
+            arr[mainArrayIndex++] = First[Index1++];
+            
+        }
+        else{
+            arr[mainArrayIndex++] = Second[Index2++];
+        
+        }
+     }
+
+     while(Index1 < l1){
+        arr[mainArrayIndex++] = First[Index1++];
+     }
+     while(Index2 < l2){
+        arr[mainArrayIndex++] = Second[Index2++];
+     }
+
+     delete []First;
+     delete []Second;
+
+}
+
+
+
+void Practice(vector < int > & arr, int s ,int e){
+
+//BASE CASE 
+
+    if(s>=e){
+        return;
+    }
+
+    int mid = (s+e)/2;
+
+//sorting left part 
+     Practice(arr,s,mid);
+    
+//sorting right part 
+     Practice(arr,mid+1 , e);
+     
+ // merging 
+
+     merge(arr,s,e);  
+
+}
+
+
+
+
+
+void mergeSort(vector < int > & arr, int n) {
+    // Write your code here.
+    Practice(arr,0 , n-1);
+    
+}
+ 
