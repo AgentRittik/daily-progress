@@ -1,0 +1,69 @@
+Problem : Perform Insertion in Heap 
+
+
+Explanation : 
+
+ -> Elements can be inserted to the heap following a similar approach as discussed above for deletion. The idea is to: 
+ -> First increase the heap size by 1, so that it can store the new element.
+ -> Insert the new element at the end of the Heap.
+ -> This newly inserted element may distort the properties of Heap for its parents. 
+    So, in order to keep the properties of Heap, heapify this newly inserted element following a bottom-up approach.
+
+
+
+code: 
+#include<iostream>
+using namespace std;
+
+
+class heap{
+    public:
+
+    int arr[1000];
+    int size;
+
+    heap(){
+        arr[0] = -1;
+        size = 0;
+    }
+    void insert(int val){
+
+        size++;
+
+        int index = size;
+        arr[index] = val;
+
+        while(index > 1){
+            int parent = index/2;
+
+            if(arr[parent] < arr[index]){
+                swap(arr[parent], arr[index]);
+                index = parent; 
+            }
+            else{
+                return;
+            }
+        }
+    }
+
+    void print(){
+        for(int i = 1 ; i<size;i++){
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
+};
+
+int main(){
+
+    heap h ; 
+    h.insert(50);
+    h.insert(55);
+    h.insert(53);
+    h.insert(52);
+    h.insert(54);
+
+    h.print();
+     return 0;
+
+}
