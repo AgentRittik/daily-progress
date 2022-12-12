@@ -1,0 +1,126 @@
+
+PROBLEM : WRITE A HEAPIFY FUNCTION TO BUILD MAX HEAP .
+
+
+
+Explanation : Heapify is the process of creating a heap data structure from a binary tree represented using an array. It is used to create Min-Heap or Max-heap. 
+              Start from the first index of the non-leaf node whose index is given by n/2 – 1. Heapify uses recursion
+              
+              Step 1 − Remove root node. 
+              Step 2 − Move the last element of last level to root. 
+              Step 3 − Compare the value of this child node with its parent. 
+              Step 4 − If value of parent is less than child, then swap them.
+              
+              perforn step 1-4  strting from lenght of array/2 -------- to greater than 0.
+              
+              
+Array = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17}
+Corresponding Complete Binary Tree is:
+
+                 1
+              /     \
+           3         5
+        /    \     /  \
+      4      6   13  10
+     / \    / \
+   9   8  15 17
+
+The task to build a Max-Heap from above array.
+
+Total Nodes = 11.
+Last Non-leaf node index = (11/2) – 1 = 4.
+Therefore, last non-leaf node = 6.
+
+To build the heap, heapify only the nodes: [1, 3, 5, 4, 6] in reverse order.
+
+Heapify 6: Swap 6 and 17.
+
+                 1
+              /     \
+           3         5
+        /    \      /  \
+     4      17   13  10
+    / \    /  \
+  9   8  15   6
+
+Heapify 4: Swap 4 and 9.
+
+                 1
+              /     \
+           3         5
+        /    \      /  \
+     9      17   13  10
+    / \    /  \
+  4   8  15   6
+
+Heapify 5: Swap 13 and 5.
+
+                 1
+              /     \
+           3         13
+        /    \      /  \
+     9      17   5   10
+    / \    /  \
+ 4   8  15   6
+
+Heapify 3: First Swap 3 and 17, again swap 3 and 15.
+
+                 1
+             /     \
+        17         13
+       /    \      /  \
+    9      15   5   10
+   / \    /  \
+ 4   8  3   6
+
+Heapify 1: First Swap 1 and 17, again swap 1 and 15, finally swap 1 and 6.
+
+                 17
+              /      \
+          15         13
+         /    \      /  \
+       9      6    5   10
+      / \    /  \
+    4   8  3    1
+    
+    
+CODE : 
+
+
+#include<iostream>
+using namespace std;
+void heapify(int arr[], int n, int i){
+    int largest = i;
+    int left = 2*i;
+    int right = 2*i+1;
+    if(left< n && arr[largest] < arr[left]){
+        largest = left;
+    }
+    if(right < n && arr[largest] < arr[right]){
+        largest = right;
+    }
+
+    if(largest != i){
+        swap(arr[largest], arr[i]);
+        heapify(arr ,n , largest);
+    }
+}
+int main(){
+int arr[6] = {-1, 54, 53, 55, 52, 50};
+    int n =5;
+    for(int i = n/2 ; i>0; i--){
+        heapify(arr ,n ,i);
+    }
+    cout<<"printing the array now"<<endl;
+    for(int i =1;i<=n;i++){
+        cout<<arr[i]<<" ";
+
+    }
+    cout<<endl;
+
+    return 0;
+
+}
+              
+              
+            
