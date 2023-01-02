@@ -1,0 +1,40 @@
+Problem : you have given a number and you have to convert the each digit of that number into english word of that number and print it prediocally .
+          try to sole this question using recursion .
+          
+          
+Examples : 
+
+Input  : 4 5 6
+Output : Four Five Six
+
+Input  : 1 2 5
+Output : One Two Five
+
+          
+          
+code :
+#include<iostream>
+using namespace std;
+
+void sayDigit(int n , string arr[]){
+    //base case 
+    if(n==0)
+    return ;
+
+    //processing
+
+    int digit = n%10;
+    n = n/10;
+    //recursive call 
+    sayDigit(n ,arr);
+    cout<<arr[digit]<<" ";
+}
+
+
+int main(){
+    string ch[10] ={"zero","one","two","three","four","five","six","seven","eight","nine"};
+    int n;
+    cin>>n;
+    sayDigit(n,ch);
+    return 0;
+}
