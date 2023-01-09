@@ -1,0 +1,100 @@
+PROBLEM 1 : Check weather the string is palindrome or not using recursion . 
+
+INPUT: rittir
+OUTPUT: string is palindrome
+
+INPUT: rittik
+OUTPUT: string is not palindrome
+
+CODE: 
+#include <iostream>
+using namespace std;
+
+bool palindrome(string &str ,int s, int e ){
+    if(s>e){
+        return true;
+    }
+    if(str[s]!= str[e]){
+        return false; 
+    }
+    else{
+        palindrome(str ,s+1 ,e-1);
+    }
+    return true;
+
+}
+
+ int main(){
+    string str = "rittir";
+    bool ans  = palindrome(str ,0 ,str.length()-1 );
+    if(ans)
+    cout<<"string is palindrome"<<endl;
+    else
+    cout<<"string is not palindrome"<<endl;
+ }
+ 
+ 
+ PROBLEM 2 :(LEETCODE)
+ Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+ If target is not found in the array, return [-1, -1].
+ You must write an algorithm with O(log n) runtime complexity.
+
+Example 1:
+
+Input: nums = [5,7,7,8,8,10], target = 8
+Output: [3,4]
+Example 2:
+
+Input: nums = [5,7,7,8,8,10], target = 6
+Output: [-1,-1]
+Example 3:
+
+Input: nums = [], target = 0
+Output: [-1,-1]
+
+
+CODE: 
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        int s = 0;
+        int e = nums.size()-1;
+        int mid = s+(e-s)/2;
+        int firstIndex =-1;
+        int lastIndex;
+        vector<int>ans;
+
+        while(s<=e){
+            if(nums[mid] == target){
+                firstIndex = mid;
+                e = mid-1;
+            }
+            if(nums[mid]>target){
+                e = mid-1;
+            }
+            if(nums[mid]<target){
+                s = mid+1;
+            }
+            mid =s+(e-s)/2;
+        }
+        if(firstIndex == -1){
+            ans.push_back(-1);
+            ans.push_back(-1);
+            return ans;
+        }
+        ans.push_back(firstIndex);
+        for(int i = firstIndex; i<nums.size(); i++){
+            if(i == nums.size()-1&& nums[i]==nums[firstIndex]){
+                ans.push_back(i);
+                return ans;
+            }
+            if(nums[i]!= nums[firstIndex]){
+                lastIndex = i-1;
+                break;
+            }
+        }
+        ans.push_back(lastIndex);
+        return ans;
+    }
+};
+ 
