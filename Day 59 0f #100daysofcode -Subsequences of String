@@ -1,1 +1,43 @@
+Problem 1 : 
 
+Sample Input 1 : 1 
+                 abc
+Sample Output 1 : a ab abc ac b bc c
+
+Sample Input 2 : 1
+                 bbb
+Sample Output 2 : b b b bb bb bb bbb.
+
+
+
+
+CODE :
+
+#include <bits/stdc++.h> 
+
+void solve(string str , int index , string output , vector<string> &ans){
+    if(index >= str.length()){
+        if(output.length()!= 0){
+            ans.push_back(output);
+        }
+        return;
+    }
+    // exclude call ; 
+        solve(str , index+1 , output , ans);
+        
+        // include call
+        char element = str[index];
+        output.push_back(element);
+        solve(str ,index+1 , output , ans);
+}
+
+vector<string> subsequences(string str){
+	
+	// Write your code here
+    vector<string> ans; 
+    int index = 0;
+    string output ="";
+    solve(str , index ,output , ans);
+    return ans;
+	
+}
