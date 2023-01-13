@@ -1,4 +1,5 @@
-Problem 1 : 
+Problem 1 : You are given a string 'STR' containing lowercase English letters from a to z inclusive . Your task is to
+            find all non-empty possible susequence of 'STR'.
 
 Sample Input 1 : 1 
                  abc
