@@ -1,0 +1,58 @@
+PROBLDEM 1: Given an integer array nums, return all the different possible non-decreasing subsequences of the given array with at least two elements. 
+            You may return the answer in any order.
+            
+Example 1:
+
+Input: nums = [4,6,7,7]
+Output: [[4,6],[4,6,7],[4,6,7,7],[4,7],[4,7,7],[6,7],[6,7,7],[7,7]]
+Example 2:
+
+Input: nums = [4,4,3,2,1]
+Output: [[4,4]]
+
+CODE :
+
+
+class Solution {
+
+    set<vector<int>>ans;
+
+    void solve(vector<int> &nums ,vector<int>output , int index){
+        //base case 
+        if(index >= nums.size()){
+            if(output.size()>= 2){
+                ans.insert(output);  //new 
+            }
+            return;
+        }
+
+        int curr = nums[index];
+        int prev = output.size() == 0 ? -101 : output[output.size()-1];
+
+        if(curr>=prev){
+            //exclude call
+            solve(nums , output , index+1);
+
+            //include call
+            output.push_back(curr);
+            solve(nums , output , index+1);
+        }
+        else{
+            //only exclude call
+            solve(nums , output , index+1);
+        }
+        
+    }
+public:
+    vector<vector<int>> findSubsequences(vector<int>& nums) {
+        
+        vector<vector<int>>finally;
+        vector<int>output;
+        int index = 0;
+        solve(nums ,output ,index);
+        for(auto i : ans){
+            finally.push_back(i);
+        }
+        return finally;
+    }
+};
