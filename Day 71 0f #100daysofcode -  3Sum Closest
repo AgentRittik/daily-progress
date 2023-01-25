@@ -1,0 +1,102 @@
+PROBLEM 1 : Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
+
+Return the sum of the three integers.
+
+You may assume that each input would have exactly one solution.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+Example 2:
+
+Input: nums = [0,0,0], target = 1
+Output: 0
+Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).
+
+
+CODE  :
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+
+        sort(nums.begin() , nums.end());
+        int ans =0 ;
+        int diff = INT_MAX;
+
+        for(int i = 0; i<nums.size(); i++){  // fixating the first element 
+            int start = i+1;
+            int end = nums.size()-1;
+            while(start < end){              // we can't take the same elemet 2 times
+                int sum = nums[i]+nums[start]+nums[end];
+                if(sum == target){
+                    return target;
+                }
+                else if(abs(sum - target) < diff){
+                    diff = abs(sum - target);
+                    ans = sum;
+
+                }
+                if(sum > target){
+                    end--;
+                }
+                if(sum < target){
+                    start++;
+                }
+            } 
+        }
+        return ans;
+    }
+};
+
+
+
+
+FAILED CODE : 
+
+
+class Solution {
+    void solve(vector<int>& nums , int target ,vector<int>output , int index , int closest){
+        //base case
+        if(index >= nums.size()){
+            if(output.size() == 3){
+                int sum = 0;
+                for(int i =0 ; i< output.size() ; i++){
+                    sum +=output[i];
+                }
+                int ans;
+                if(sum < target){
+                    ans = target -sum;
+                }
+                else{
+                    ans = sum -target;
+                }
+                if(ans <0)
+                ans = ans*(-1);
+                closest  = min(closest , ans);
+            }
+            return ;
+        }
+        //exclude call
+        solve(nums ,target , output , index+1 , closest);
+        //include call
+        output.push_back(nums[index]);
+        solve(nums , target , output , index+1 , closest);
+    }
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        int index = 0 ; 
+        vector<int>output;
+        int closest;
+        int addition = nums[0]+nums[1]+nums[2];
+        if(addition < target)
+        closest = target -addition;
+        else
+        closest = addition-target;
+        solve(nums , target , output , index , closest);
+        return closest;
+    }
+};
