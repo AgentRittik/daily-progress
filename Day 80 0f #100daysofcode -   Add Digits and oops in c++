@@ -1,0 +1,236 @@
+PROBLEM 1 : Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
+
+ 
+
+Example 1:
+
+Input: num = 38
+Output: 2
+Explanation: The process is
+38 --> 3 + 8 --> 11
+11 --> 1 + 1 --> 2 
+Since 2 has only one digit, return it.
+Example 2:
+
+Input: num = 0
+Output: 0
+
+CODE :
+class Solution {
+public:
+    int addDigits(int num) {
+        if(num == 0) return 0;
+        else if(num % 9 == 0) return 9;
+        else return num % 9;
+    }
+};
+
+
+
+OOPS  : CPY CONSTRUCTOR
+
+#include<iostream>
+#include<cstring>
+
+ 
+using namespace std ;
+
+class Hero{                //by default the access modifier is PRIVATE
+    //properties
+    private :
+    int health;
+     
+    public :  
+    // char name[100];  -> not s good practice
+    char *name;
+    char level;
+
+
+    // default constructor
+    Hero(){
+        cout<<endl << "constructor is called"<<endl;
+        name = new char[100]; // allocating the array
+    }
+
+    // parametrized constructor
+    Hero(int health){
+
+        cout <<"this --> "<<this<<endl;
+        this->health = health;
+    }
+
+    Hero(int health , int level){
+        this->level = level;
+        this->health = health;
+    }
+
+    //shalow cpy is always made in case of default constructor
+
+    //kudh ka copy constructor
+    Hero(Hero &temp){              // pass by reference se hi bjna padegaa nahi to paa by value se infinite loop me fas jayegaa
+       
+        char *ch = new char[strlen(temp.name)+1];
+        strcpy(ch,temp.name);
+        this->name= ch;
+        
+        cout<<"cpy constructor is called"<<endl;
+        this->health = temp.health;
+        this->level = temp.level;
+    }   
+      
+
+    void print(){
+        cout<<endl;
+        cout<<"[ name : "<<this->name<<" ,";
+        cout<<"health : "<< this->health <<" ,";
+        cout<<"level : "<<this->level<<" ]";
+        cout<<endl;
+    }
+ 
+ //getter methods 
+    int getHealth(){
+        return health;
+    }
+
+    char getLevel(){
+        return level;
+    }
+
+    //setter methods  --> uses of setter  - > we can put condition e.g -> only particular name player will be able to change 
+
+    void setHealth(int h , char name ){
+        if(name == 'A'){
+            health = h;
+        }
+    }
+
+    void setLevel(char ch){
+        level = ch;
+    }
+
+    void setName(char name[]){
+        strcpy(this->name , name);
+    }
+};
+
+int main(){
+
+
+    Hero hero1;
+    hero1.setHealth(12 ,'A');
+    hero1.setLevel('D');
+    char name[7] = "rittik";
+    hero1.setName(name);
+
+    
+
+    //use default cpy constructor
+
+    Hero hero2(hero1);
+    
+    // Hero hero2 = hero1;
+
+    hero1.name[0] = 'G';
+    hero1.print();
+
+
+    hero2.print();
+
+    hero1 = hero2;
+
+    hero1.print();
+
+
+    hero2.print();
+    
+
+   
+
+}
+
+2ND CASE : 
+
+#include<iostream>
+
+ 
+using namespace std ;
+
+class Hero{                //by default the access modifier is PRIVATE
+    //properties
+    private :
+    int health;
+     
+    public :  
+    // char name[100];  -> not s good practice
+    char level;
+
+
+    // default constructor
+    Hero(){
+        cout<<endl << "constructor is called"<<endl;
+    }
+
+    // parametrized constructor
+    Hero(int health){
+
+        cout <<"this --> "<<this<<endl;
+        this->health = health;
+    }
+
+    Hero(int health , int level){
+        this->level = level;
+        this->health = health;
+    }
+
+    //kudh ka copy constructor
+    Hero(Hero &temp){              // pass by reference se hi bjna padegaa nahi to paa by value se infinite loop me fas jayegaa
+        cout<<"cpy constructor is called"<<endl;
+        this->health = temp.health;
+        this->level = temp.level;
+    }
+
+
+    void Print(){
+        cout<<"health "<< this->health << endl;
+        cout<<"level "<<this->level<<endl;
+    }
+ 
+ //getter methods 
+    int getHealth(){
+        return health;
+    }
+
+    char getLevel(){
+        return level;
+    }
+
+    //setter methods  --> uses of setter  - > we can put condition e.g -> only particular name player will be able to change 
+
+    void setHealth(int h , char name ){
+        if(name == 'A'){
+            health = h;
+        }
+    }
+
+    void setLevel(char ch){
+        level = ch;
+    }
+
+};
+
+int main(){
+
+
+    Hero S(70 ,'C');
+    S.Print(); 
+
+// copy constructor
+    Hero R(S);
+
+    cout<<endl<<"copy constructor"<<endl<<endl;
+    R.Print();
+
+    // what i am saying
+    // R.health = S.health;
+    // R.level = S.level 
+}
